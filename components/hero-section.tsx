@@ -2,11 +2,44 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { Wrench, Zap, Droplets, CheckCircle } from "lucide-react"
 
 export function HeroSection() {
+  const animatedTools = useMemo(() => {
+    return [...Array(5)].map((_, i) => {
+      const left = `${Math.random() * 100}%`
+      const top = `${Math.random() * 100}%`
+      const duration = Math.random() * 5 + 5
+      const delay = Math.random() * 5
+      const size = Math.random() * 30 + 20
+
+      const Icon = i % 3 === 0 ? Wrench : i % 3 === 1 ? Zap : Droplets
+
+      return (
+        <motion.div
+          key={i}
+          className="absolute text-blue-200/30"
+          style={{ left, top }}
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 10, 0],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration,
+            repeat: Number.POSITIVE_INFINITY,
+            delay,
+          }}
+        >
+          <Icon size={size} />
+        </motion.div>
+      )
+    })
+  }, [])
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white pt-24 lg:pt-32">
       {/* Decorative elements */}
@@ -15,34 +48,7 @@ export function HeroSection() {
 
       {/* Animated tools */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-blue-200/30"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              rotate: [0, 10, 0],
-              opacity: [0.2, 0.3, 0.2],
-            }}
-            transition={{
-              duration: Math.random() * 5 + 5,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 5,
-            }}
-          >
-            {i % 3 === 0 ? (
-              <Wrench size={Math.random() * 30 + 20} />
-            ) : i % 3 === 1 ? (
-              <Zap size={Math.random() * 30 + 20} />
-            ) : (
-              <Droplets size={Math.random() * 30 + 20} />
-            )}
-          </motion.div>
-        ))}
+        {animatedTools}
       </div>
 
       <div className="container relative mx-auto px-4">
@@ -65,22 +71,17 @@ export function HeroSection() {
             </p>
 
             <div className="mb-8 grid grid-cols-2 gap-4">
-              <div className="flex items-center gap-2 text-gray-700">
-                <CheckCircle size={20} className="text-blue-600" />
-                <span>Respuesta rápida</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-700">
-                <CheckCircle size={20} className="text-blue-600" />
-                <span>Técnicos certificados</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-700">
-                <CheckCircle size={20} className="text-blue-600" />
-                <span>Garantía de servicio</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-700">
-                <CheckCircle size={20} className="text-blue-600" />
-                <span>Precios transparentes</span>
-              </div>
+              {[
+                "Respuesta rápida",
+                "Técnicos certificados",
+                "Garantía de servicio",
+                "Precios transparentes",
+              ].map((text, i) => (
+                <div key={i} className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle size={20} className="text-blue-600" />
+                  <span>{text}</span>
+                </div>
+              ))}
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center md:justify-start">
@@ -113,24 +114,18 @@ export function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent">
                   <div className="absolute bottom-6 left-0 w-full px-6">
                     <div className="flex justify-between">
-                      <div className="flex flex-col items-center">
-                        <div className="rounded-full bg-white/20 p-3 backdrop-blur-sm">
-                          <Zap size={24} className="text-white" />
+                      {[
+                        { icon: <Zap size={24} />, label: "Electricidad" },
+                        { icon: <Droplets size={24} />, label: "Plomería" },
+                        { icon: <Wrench size={24} />, label: "Mantenimiento" },
+                      ].map((item, i) => (
+                        <div key={i} className="flex flex-col items-center">
+                          <div className="rounded-full bg-white/20 p-3 backdrop-blur-sm">
+                            {item.icon}
+                          </div>
+                          <span className="mt-2 text-sm font-medium text-white">{item.label}</span>
                         </div>
-                        <span className="mt-2 text-sm font-medium text-white">Electricidad</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <div className="rounded-full bg-white/20 p-3 backdrop-blur-sm">
-                          <Droplets size={24} className="text-white" />
-                        </div>
-                        <span className="mt-2 text-sm font-medium text-white">Plomería</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <div className="rounded-full bg-white/20 p-3 backdrop-blur-sm">
-                          <Wrench size={24} className="text-white" />
-                        </div>
-                        <span className="mt-2 text-sm font-medium text-white">Mantenimiento</span>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -144,70 +139,75 @@ export function HeroSection() {
         </div>
 
         <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-center">
-          <div className="flex flex-col items-center">
-            <div className="mb-2 rounded-full bg-blue-100 p-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-blue-600"
-              >
-                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                <path d="m9 12 2 2 4-4"></path>
-              </svg>
+          {[
+            {
+              icon: (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-blue-600"
+                >
+                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              ),
+              text: "100% Garantía",
+            },
+            {
+              icon: (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-blue-600"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              ),
+              text: "Servicio 24/7",
+            },
+            {
+              icon: (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-blue-600"
+                >
+                  <path d="M12 22s8-4 8-10V7l-8-5-8 5v5c0 6 8 10 8 10z"></path>
+                </svg>
+              ),
+              text: "Seguridad garantizada",
+            },
+          ].map((item, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <div className="mb-2 rounded-full bg-blue-100 p-3">{item.icon}</div>
+              <p className="font-medium text-gray-900">{item.text}</p>
+              {i < 2 && <div className="h-10 w-px bg-gray-200 md:h-16"></div>}
             </div>
-            <p className="font-medium text-gray-900">100% Garantía</p>
-          </div>
-          <div className="h-10 w-px bg-gray-200 md:h-16"></div>
-          <div className="flex flex-col items-center">
-            <div className="mb-2 rounded-full bg-blue-100 p-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-blue-600"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-            </div>
-            <p className="font-medium text-gray-900">Servicio 24/7</p>
-          </div>
-          <div className="h-10 w-px bg-gray-200 md:h-16"></div>
-          <div className="flex flex-col items-center">
-            <div className="mb-2 rounded-full bg-blue-100 p-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-blue-600"
-              >
-                <path d="M12 22s8-4 8-10V7l-8-5-8 5v5c0 6 8 10 8 10z"></path>
-              </svg>
-            </div>
-            <p className="font-medium text-gray-900">Seguridad garantizada</p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
   )
 }
-
