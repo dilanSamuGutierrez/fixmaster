@@ -2,13 +2,22 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useMemo } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { Wrench, Zap, Droplets, CheckCircle } from "lucide-react"
 
 export function HeroSection() {
+
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const animatedTools = useMemo(() => {
+    if (!mounted) return null // 👈 No generar nada hasta estar en el cliente
+
     return [...Array(5)].map((_, i) => {
       const left = `${Math.random() * 100}%`
       const top = `${Math.random() * 100}%`
@@ -38,7 +47,7 @@ export function HeroSection() {
         </motion.div>
       )
     })
-  }, [])
+  }, [mounted])
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white pt-24 lg:pt-32">
@@ -103,7 +112,7 @@ export function HeroSection() {
             <div className="absolute left-0 top-0 h-full w-full rounded-2xl bg-white p-3 shadow-lg">
               <div className="relative h-full w-full overflow-hidden rounded-xl">
                 <Image
-                  src="/placeholder.svg?height=800&width=600"
+                  src="/img/start.jpeg"
                   alt="Técnico profesional trabajando"
                   fill
                   className="object-cover"
@@ -203,7 +212,7 @@ export function HeroSection() {
             <div key={i} className="flex flex-col items-center">
               <div className="mb-2 rounded-full bg-blue-100 p-3">{item.icon}</div>
               <p className="font-medium text-gray-900">{item.text}</p>
-              {i < 2 && <div className="h-10 w-px bg-gray-200 md:h-16"></div>}
+              {i < 3 && <div className="h-10 w-px bg-gray-200 md:h-16"></div>}
             </div>
           ))}
         </div>

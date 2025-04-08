@@ -21,7 +21,7 @@ export function TestimonialsSection() {
       id: 1,
       name: "Carlos Rodríguez",
       role: "Propietario de vivienda",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "/img/user.png",
       content:
         "Excelente servicio. Tuve un problema eléctrico urgente y respondieron en menos de una hora. El técnico fue muy profesional y resolvió el problema rápidamente. Definitivamente los recomendaré.",
       rating: 5,
@@ -30,7 +30,7 @@ export function TestimonialsSection() {
       id: 2,
       name: "María González",
       role: "Administradora de fincas",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "/img/user.png",
       content:
         "Llevamos trabajando con ellos más de 2 años para el mantenimiento de varios edificios. Su profesionalidad y calidad de trabajo son excepcionales. Siempre cumplen con los plazos y presupuestos acordados.",
       rating: 5,
@@ -39,7 +39,7 @@ export function TestimonialsSection() {
       id: 3,
       name: "Javier Martínez",
       role: "Gerente de oficina",
-      image: "/placeholder.svg?height=100&width=100",
+      image: "/img/user.png",
       content:
         "Contratamos sus servicios para la renovación completa de la instalación eléctrica de nuestra oficina. El trabajo fue impecable y nos asesoraron sobre soluciones más eficientes energéticamente.",
       rating: 4,

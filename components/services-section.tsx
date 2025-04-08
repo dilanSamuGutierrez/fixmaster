@@ -41,7 +41,7 @@ export function ServicesSection() {
       description:
         "Instalación profesional de sistemas eléctricos residenciales y comerciales, cumpliendo con todas las normativas de seguridad vigentes.",
       icon: <Zap size={24} className="text-blue-600" />,
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/img/instalacion.webp",
       features: [
         "Instalación de cableado completo",
         "Montaje de cuadros eléctricos",
@@ -58,7 +58,7 @@ export function ServicesSection() {
       description:
         "Sustitución de enchufes antiguos o dañados por nuevos modelos más seguros y eficientes, adaptados a las necesidades actuales.",
       icon: <Plug size={24} className="text-blue-600" />,
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/img/enchufes.webp",
       features: [
         "Sustitución de enchufes convencionales",
         "Instalación de enchufes con USB",
@@ -75,7 +75,7 @@ export function ServicesSection() {
       description:
         "Diseño e instalación de sistemas de iluminación eficientes y decorativos para interiores y exteriores.",
       icon: <Lightbulb size={24} className="text-blue-600" />,
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/img/iluminacion.jpeg",
       features: [
         "Instalación de luminarias",
         "Sistemas LED de bajo consumo",
@@ -92,7 +92,7 @@ export function ServicesSection() {
       description:
         "Montaje profesional de ventiladores de techo y pared, asegurando una correcta fijación y conexión eléctrica.",
       icon: <Fan size={24} className="text-blue-600" />,
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/img/ventilador.jpg",
       features: [
         "Instalación de ventiladores de techo",
         "Montaje de ventiladores de pared",
@@ -109,7 +109,7 @@ export function ServicesSection() {
       description:
         "Solución rápida y eficaz para todo tipo de problemas de plomería, desde fugas hasta atascos y roturas.",
       icon: <Droplets size={24} className="text-blue-600" />,
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/img/baños.jpg",
       features: [
         "Reparación de fugas y goteras",
         "Desatascos de tuberías",
@@ -126,7 +126,7 @@ export function ServicesSection() {
       description:
         "Renovación e instalación completa de baños, incluyendo sanitarios, grifería, duchas y sistemas de fontanería.",
       icon: <Shower size={24} className="text-blue-600" />,
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/img/plomeria.jpg",
       features: [
         "Instalación de sanitarios",
         "Montaje de duchas y bañeras",
@@ -143,7 +143,7 @@ export function ServicesSection() {
       description:
         "Servicios profesionales de pintura para interiores y exteriores, con acabados de alta calidad y durabilidad.",
       icon: <PaintBucket size={24} className="text-blue-600" />,
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/img/pintura.jpg",
       features: [
         "Pintura de interiores",
         "Tratamiento de exteriores",
@@ -160,7 +160,7 @@ export function ServicesSection() {
       description:
         "Soluciones para todo tipo de reparaciones domésticas, desde montaje de muebles hasta arreglos estructurales menores.",
       icon: <Hammer size={24} className="text-blue-600" />,
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/img/reparaciones.jpg",
       features: [
         "Montaje de muebles",
         "Reparación de puertas y ventanas",
@@ -177,7 +177,7 @@ export function ServicesSection() {
       description:
         "Instalación y mantenimiento de sistemas de aire acondicionado, calefacción y ventilación para máximo confort.",
       icon: <Thermometer size={24} className="text-blue-600" />,
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/img/climatizacion.jpg",
       features: [
         "Instalación de aire acondicionado",
         "Mantenimiento de sistemas HVAC",

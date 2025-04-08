@@ -138,7 +138,7 @@ export function WhyChooseUsSection() {
 
             <div className="relative h-64 overflow-hidden rounded-lg md:h-auto">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/img/reparaciones.jpg"
                 alt="Técnico profesional trabajando"
                 fill
                 className="object-cover"
